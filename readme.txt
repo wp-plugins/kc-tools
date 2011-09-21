@@ -1,7 +1,7 @@
 === KC Tools ===
 Contributors: krumch
 Donate link: http://krumch.com/kctools.html
-Tags: system info, environment info, DB access, DB, SSH
+Tags: system info, environment info, DB access, DB, SSH, developers tools, tool
 Requires at least: 3.0
 Tested up to: 3.1.2
 Stable tag: 20110601
