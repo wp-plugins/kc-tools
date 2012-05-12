@@ -1,12 +1,12 @@
 <?php 
 /* 
-	Plugin Name: KC Tools
+	Plugin Name: KC Tools WP
 	Plugin URI: http://krumch.com/kctools.html
 	Description: Brain surgery for WEB-sites (System info, DB access and SSH over HTTP)
 	Author: Krum Cheshmedjiev
-	Copyright: © 2011 Krum Cheshmedjiev
+	Copyright: © 2012 Krum Cheshmedjiev
 	Author URI: http://krumch.com
-	Version: 20110601
+	Version: 20120512
 */  
 
 
@@ -31,7 +31,7 @@ function kctools() {
 		print '" onclick="document.kct.tab.value=\'db\';document.kct.submit();">&nbsp;DB&nbsp;</li>';
 		print '<li class=kcthand style="float:left;position:relative;margin:10px;background-color:';
 		print ($tab == 'ssh')?'#ccc':'#eee';
-		print '" onclick="document.kct.tab.value=\'ssh\';document.kct.submit();">&nbsp;SSH&nbsp;</li></ul></div><br><br><br><div style="width:100%;">';
+		print '" onclick="document.kct.tab.value=\'ssh\';document.kct.submit();">&nbsp;SSH&nbsp;</li></ul></div><br><br><br><div id="kctools" style="width:80%;float:left;border-right:1px dotted black;">';
 		switch ($tab) {
 			case 'db':
 				global $wpdb;
@@ -85,18 +85,51 @@ function kctools() {
 				print "<script lang=JavaScript>\ndocument.kct.query.focus();\n</script>";
 				break;
 			default:
-				ksort($_SERVER);
-				foreach($_SERVER as $keys => $values) {
-					print "!$keys! -> !$values!<br>\n";
+				ob_start();
+				phpinfo();
+				$body = array();
+				$b = explode('style', ob_get_clean(), 3);
+				list($temp,) = explode('>', $b[1], 2);
+				$body[1] = "<style$temp>";
+				list(,$temp) = explode('>', $b[1], 2);
+				$body[2] = substr(str_replace(array('<!--', '-->'), '', $temp), 0, -2);
+				$body[3] = "</style>";
+				list(,$temp,) = explode('body>', $b[2], 3);
+				$body[4] = substr($temp, 0, -2);
+				$styles = explode('}', trim(str_replace("\n", '', $body[2])));
+				$rez = array();
+				foreach($styles as $st) {
+					list($tags, $set) = explode('{', $st);
+					$tags = trim($tags);
+					if(strpos($tags, ',')) {
+						$rt = '';
+						foreach(explode(',', $tags) as $t) {
+							$t = kctsetit(trim($t));
+							if($t) {
+								if($rt) $rt .= ', ';
+								$rt .= $t;
+							}
+						}
+						$tags = $rt;
+					} else {
+						$tags = kctsetit($tags);
+					}
+					if($tags) $rez[] = $tags.' {'.$set;
 				}
-				print "<br><br><br>\n";
-				phpinfo();			
+				$body[2] = implode("}\n", $rez)."}\n";
+				echo $body[1].$body[2].$body[3].$body[4];
 				break;
 		}
-		print "</div>";
+		print "</div><div style=\"float:left;width:19%\"><iframe width=\"100%\" height=\"500\" src=\"http://krumch.com/kc_news.php?src=kct_wp\"></iframe></div>";
 	}
 	print "</form>";
 	return;
+}
+
+function kctsetit($tag) {
+	if(strpos($tag, 'body') === 0) return '';
+	if($tag == '') return '';
+	return "#kctools $tag";
 }
 
 function kctools_activate() {
