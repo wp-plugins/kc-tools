@@ -3,7 +3,7 @@ Contributors: krumch
 Donate link: http://krumch.com/kctools_wp.html
 Tags: system info, environment info, DB access, DB, SSH, developers tools, tool
 Requires at least: 3.0
-Tested up to: 3.2.1
+Tested up to: 3.3.2
 Stable tag: 20120424
 
 Brain surgery for WEB-sites (System info, DB access and SSH over HTTP).
