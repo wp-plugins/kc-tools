@@ -4,7 +4,7 @@ Donate link: http://krumch.com/kctools_wp.html
 Tags: system info, environment info, DB access, DB, SSH, developers tools, tool
 Requires at least: 3.0
 Tested up to: 3.3.2
-Stable tag: 20120424
+Stable tag: 20120613
 
 Brain surgery for WEB-sites (System info, DB access and SSH over HTTP).
 
@@ -24,10 +24,10 @@ Sometimes, when develop something new or try to find problem somewhere, needs to
 == Installation ==
 
 0. Create MD5 of your password
-2. Upload the archive by "Add new"-&gt;"Upload" on "Plugins" page
-3. Click "Edit" under plugin name at "Plugins" page. Put MD5-ed password in $thepassword variable at first code row in kstools.php
-4. Activate the plugin through the "Plugins" menu in WordPress
-5. Click "KC Tools" row in "Settings" within "Admin dashboard". First time you will be asked about password.
+1. Upload the archive by "Add new"-&gt;"Upload" on "Plugins" page
+2. Click "Edit" under plugin name at "Plugins" page. Put MD5-ed password in $thepassword variable at first code row in kstools.php
+3. Activate the plugin through the "Plugins" menu in WordPress
+4. Click "KC Tools" row in "Settings" within "Admin dashboard". First time you will be asked about password.
 
 == Frequently Asked Questions ==
 
@@ -40,6 +40,9 @@ No questions, so far. Ask me, I will answer. Did you have some suggestions? What
 3. SHH tab
 
 == Changelog ==
+
+= 20120613 =
+* Improved visual appearance.
 
 = 20120512 =
 * Fixed pictures in Admin panel, when PHP info is shown.

@@ -6,14 +6,14 @@
 	Author: Krum Cheshmedjiev
 	Copyright: © 2012 Krum Cheshmedjiev
 	Author URI: http://krumch.com
-	Version: 20120512
+	Version: 20120613
 */  
 
 
 
 function kctools() {
 	$thepassword="put your md5-ed password here";
-	print '<style> .kcthand { cursor:pointer } </style><form name="kct" action="'.str_replace( '%7E', '~', $_SERVER['REQUEST_URI']).'" method=POST>';
+	print '<style> .kcthand { cursor:pointer } </style><form name="kct" action="'.str_replace( '%7E', '~', $_SERVER['REQUEST_URI']).'" method=POST><div id="kctools" style="width:80%;float:left;border-right:1px dotted black;overflow-x:auto;">';
 	if(get_option('kctools') != md5($thepassword.$_SERVER['REMOTE_ADDR']) and (!isset($_POST['kctpassword']) or $thepassword != md5($_POST['kctpassword']))) {
 		print '<br>Password: <input type="password" name="kctpassword" value="">';
 	} else {
@@ -31,7 +31,7 @@ function kctools() {
 		print '" onclick="document.kct.tab.value=\'db\';document.kct.submit();">&nbsp;DB&nbsp;</li>';
 		print '<li class=kcthand style="float:left;position:relative;margin:10px;background-color:';
 		print ($tab == 'ssh')?'#ccc':'#eee';
-		print '" onclick="document.kct.tab.value=\'ssh\';document.kct.submit();">&nbsp;SSH&nbsp;</li></ul></div><br><br><br><div id="kctools" style="width:80%;float:left;border-right:1px dotted black;">';
+		print '" onclick="document.kct.tab.value=\'ssh\';document.kct.submit();">&nbsp;SSH&nbsp;</li></ul></div><br><br><br>';
 		switch ($tab) {
 			case 'db':
 				global $wpdb;
@@ -40,7 +40,6 @@ function kctools() {
 				print "<center>";
 				$tbls="<div style=\"border: 1px solid #000;width:80%;display:table-cell;\">";
 				foreach($tables as $tbl) {
-# $t=~s/`//g;
 					$tbls.="<div style=\"float:left;margin:2px;background-color:#eee;aling:center\"><span class=kcthand onclick=\"document.kct.query.value='select * from ".$tbl[0]."';document.kct.submit();\">".$tbl[0]."</span><br><span class=kcthand onclick=\"document.kct.query.value='show columns from ".$tbl[0]."';document.kct.submit();\">cols</span></div>";
 				}
 				$tbls.="</ul></div>\n";
@@ -120,11 +119,17 @@ function kctools() {
 				echo $body[1].$body[2].$body[3].$body[4];
 				break;
 		}
-		print "</div><div style=\"float:left;width:19%\"><iframe width=\"100%\" height=\"500\" src=\"http://krumch.com/kc_news.php?src=kct_wp\"></iframe></div>";
+		print "</div><div style=\"float:left;width:19.9%;height:100%\"><iframe id=\"kcnews\" width=\"100%\" height=\"500\" src=\"http://krumch.com/kc_news.php?src=kct_wp\"></iframe></div>";
 	}
-	print "</form>";
+	print "</form><script type='text/javascript'>
+/* <![CDATA[ */
+	jQuery('#kcnews').css('height', jQuery('#kctools').css('height'));
+/* ]]> */
+</script>";
 	return;
 }
+
+wp_enqueue_script ("jquery");
 
 function kctsetit($tag) {
 	if(strpos($tag, 'body') === 0) return '';
