@@ -20,6 +20,7 @@ Sometimes, when develop something new or try to find problem somewhere, needs to
 <br>
 
 <strong>Gurus</strong>: It countain 3 tools. First allows to see environment variables and PHP init settings. Second allows direct communication with database, think about "mysql" command line tool. It is very light phpMyAdmin. Third is terminal-like tool, allowing command row, almost like SSH, but restricted to HTTPD user rights and no way to run continuous tasks like "top". <a href="http://krumch.com/kctools.html">There</a> exists a commercial WP version and non-WP versions too, with more functions.</p>
+<p>Feel free to review all my <a href="http://krumch.com/category/wp_plugins/" target="_blank">other plugins</a>.</p>
 
 == Installation ==
 
