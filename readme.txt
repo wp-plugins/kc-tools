@@ -3,8 +3,8 @@ Contributors: krumch
 Donate link: http://krumch.com/kctools_wp.html
 Tags: system info, environment info, hardware info, DB access, DB, SSH, developers tools, tool
 Requires at least: 3.0
-Tested up to: 3.3.2
-Stable tag: 20120613
+Tested up to: 3.4.2
+Stable tag: 20120921
 
 Brain surgery for WEB-sites (System info, DB access and SSH over HTTP).
 
@@ -41,6 +41,9 @@ No questions, so far. Ask me, I will answer. Did you have some suggestions? What
 
 == Changelog ==
 
+= 20120921 =
+* Testing with last WP version.
+
 = 20120613 =
 * Improved visual appearance.
 
@@ -53,6 +56,9 @@ No questions, so far. Ask me, I will answer. Did you have some suggestions? What
 * The very first versions.
 
 == Upgrade Notice ==
+
+= 20120921 =
+Testing with last WP version.
 
 = 20120613 =
 Improved visual appearance.

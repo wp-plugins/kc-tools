@@ -6,7 +6,7 @@
 	Author: Krum Cheshmedjiev
 	Copyright: © 2012 Krum Cheshmedjiev
 	Author URI: http://krumch.com
-	Version: 20120613
+	Version: 20120921
 */  
 
 
@@ -123,7 +123,7 @@ function kctools() {
 	}
 	print "</form><script type='text/javascript'>
 /* <![CDATA[ */
-	jQuery('#kcnews').css('height', jQuery('#kctools').css('height'));
+	jQuery('#kcnews').css('height', jQuery('#kcnews').parent().parent().parent().css('height'));
 /* ]]> */
 </script>";
 	return;
