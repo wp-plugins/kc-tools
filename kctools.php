@@ -19,6 +19,7 @@ function kctools() {
 	} else {
 		if(get_option('kctools') != md5($thepassword.$_SERVER['REMOTE_ADDR']) and isset($_POST['kctpassword']) and $thepassword == md5($_POST['kctpassword'])) update_option('kctools', md5($thepassword.$_SERVER['REMOTE_ADDR']));
 		$tab=(!isset($_POST['tab']) or ($_POST['tab'] != 'db' and $_POST['tab'] != 'ssh'))?'':$_POST['tab'];
+		print '<input type="hidden" name="tab" value="'.$tab.'">';
 		if(!isset($_POST['oldtab'])) $_POST['oldtab']='';
 		if($tab != $_POST['oldtab']) $_POST['query']='';
 		print '<input type="hidden" name="oldtab" value="'.$tab.'"><br><div style="width:100%"><ul>';
