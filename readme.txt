@@ -1,10 +1,10 @@
 === KC Tools ===
 Contributors: krumch
 Donate link: http://krumch.com/kctools_wp.html
-Tags: system info, environment info, hardware info, DB access, DB, SSH, developers tools, tool
+Tags: system info, environment info, hardware info, DB access, DB, SSH, developers tools, tool, PHP info
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 20120921
+Stable tag: 20121014
 
 Brain surgery for WEB-sites (System info, DB access and SSH over HTTP).
 
@@ -42,6 +42,9 @@ No questions, so far. Ask me, I will answer. Did you have some suggestions? What
 
 == Changelog ==
 
+= 20121014 =
+Annoying warnings fixed (we need fun warnings only)
+
 = 20120921 =
 * Testing with last WP version.
 
@@ -57,6 +60,9 @@ No questions, so far. Ask me, I will answer. Did you have some suggestions? What
 * The very first versions.
 
 == Upgrade Notice ==
+
+= 20121014 =
+Annoying warnings fixed (we need fun warnings only)
 
 = 20120921 =
 Testing with last WP version.

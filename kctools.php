@@ -6,7 +6,7 @@
 	Author: Krum Cheshmedjiev
 	Copyright: © 2012 Krum Cheshmedjiev
 	Author URI: http://krumch.com
-	Version: 20120921
+	Version: 20121014
 */  
 
 
@@ -19,7 +19,7 @@ function kctools() {
 	} else {
 		if(get_option('kctools') != md5($thepassword.$_SERVER['REMOTE_ADDR']) and isset($_POST['kctpassword']) and $thepassword == md5($_POST['kctpassword'])) update_option('kctools', md5($thepassword.$_SERVER['REMOTE_ADDR']));
 		$tab=(!isset($_POST['tab']) or ($_POST['tab'] != 'db' and $_POST['tab'] != 'ssh'))?'':$_POST['tab'];
-		print '<input type="hidden" name="tab" value="'.$tab.'">';
+		if(!isset($_POST['oldtab'])) $_POST['oldtab']='';
 		if($tab != $_POST['oldtab']) $_POST['query']='';
 		print '<input type="hidden" name="oldtab" value="'.$tab.'"><br><div style="width:100%"><ul>';
 		print '<li style="float:left;position:relative;margin-top:12px;"><img src="'.plugins_url('kctools.gif', __FILE__).'"></li>';
@@ -98,7 +98,9 @@ function kctools() {
 				$styles = explode('}', trim(str_replace("\n", '', $body[2])));
 				$rez = array();
 				foreach($styles as $st) {
-					list($tags, $set) = explode('{', $st);
+					$row = explode('{', $st);
+					$tags = (isset($row[0]))?$row[0]:'';
+					$set = (isset($row[1]))?$row[1]:'';
 					$tags = trim($tags);
 					if(strpos($tags, ',')) {
 						$rt = '';
@@ -129,7 +131,8 @@ function kctools() {
 	return;
 }
 
-wp_enqueue_script ("jquery");
+function kct_scripts_method() { wp_enqueue_script("jquery"); }
+add_action('admin_enqueue_scripts', 'kct_scripts_method');
 
 function kctsetit($tag) {
 	if(strpos($tag, 'body') === 0) return '';
@@ -137,21 +140,13 @@ function kctsetit($tag) {
 	return "#kctools $tag";
 }
 
-function kctools_activate() {
-}
-
+function kctools_activate() {}
 register_activation_hook( __FILE__, 'kctools_activate' );
 
-function kctools_deactivate() {
-	delete_option('kctools');
-}
-
+function kctools_deactivate() { delete_option('kctools'); }
 register_deactivation_hook( __FILE__, 'kctools_deactivate' );
 
-function kctools_admin_actions() {  
-	add_options_page("kctools", "<img src=\"".plugins_url('kctools.gif', __FILE__)."\"> KC Tools", 1, "kctools", "kctools");
-}  
-
+function kctools_admin_actions() { add_options_page("kctools", "<img src=\"".plugins_url('kctools.gif', __FILE__)."\"> KC Tools", 'administrator', "kctools", "kctools"); }  
 add_action('admin_menu', 'kctools_admin_actions');
 
 ?>
