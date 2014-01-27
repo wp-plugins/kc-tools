@@ -3,8 +3,8 @@ Contributors: krumch
 Donate link: http://krumch.com/kctools_wp.html
 Tags: system info, environment info, hardware info, DB access, DB, SSH, developers tools, tool, PHP info
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 20121014
+Tested up to: 3.8.1
+Stable tag: 20140127
 
 Brain surgery for WEB-sites (System info, DB access and SSH over HTTP).
 
@@ -41,6 +41,9 @@ No questions, so far. Ask me, I will answer. Did you have some suggestions? What
 3. SHH tab
 
 == Changelog ==
+
+= 20140127 =
+Tested with WP 3.8.1
 
 = 20121014 =
 Annoying warnings fixed (we need fun warnings only)
