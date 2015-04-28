@@ -4,9 +4,9 @@
 	Plugin URI: http://krumch.com/kctools.html
 	Description: Brain surgery for WEB-sites (System info, DB access and SSH over HTTP)
 	Author: Krum Cheshmedjiev
-	Copyright: © 2014 Krum Cheshmedjiev
+	Copyright: © 2015 Krum Cheshmedjiev
 	Author URI: http://krumch.com
-	Version: 20140127
+	Version: 20150428
 */  
 
 
